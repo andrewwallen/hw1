@@ -153,6 +153,33 @@ CREATE TABLE top_cast(
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO studio(
+    studio_name
+)
+VALUES (
+    "Warner Bros."
+);
+
+INSERT INTO movies(
+    movie_name,
+    release_year,
+    mpaa_rating,
+    studio_id
+)
+VALUES (
+    "Batman Begins",
+    2005, 
+    "PG-13",
+    1
+),
+    ("The Dark Knight",
+    2008,
+    "PG-13",
+    1),
+    ("The Dark Knight Rises",
+    2012,
+    "PG-13",
+    1);
 
 -- Prints a header for the movies output
 .print "Movies"
