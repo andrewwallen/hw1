@@ -181,6 +181,59 @@ VALUES (
     "PG-13",
     1);
 
+INSERT INTO actors(
+    actor_name
+)
+VALUES
+    ("Christian Bale"),
+    ("Michael Caine"),
+    ("Liam Neeson"),
+    ("Katie Holmes"),
+    ("Gary Oldman"),
+    ("Heath Ledger"),
+    ("Aaron Eckhart"),
+    ("Maggie Gyllenhaal"),
+    ("Tom Hardy"),
+    ("Joseph Gordon-Levitt"),
+    ("Anne Hathaway");
+
+INSERT INTO characters(
+    character_name
+)
+VALUES
+    ("Bruce Wayne"),
+    ("Alfred"),
+    ("Ra's Al Gul"),
+    ("Rachel Dawes"),
+    ("Commissioner Gordon"),
+    ("Joker"),
+    ("Harvey Dent"),
+    ("Bane"),
+    ("John Blake"),
+    ("Selina Kyle");
+
+INSERT INTO top_cast(
+    movies_id,
+    actors_id,
+    characters_id
+)
+VALUES
+    (1,1,1),
+    (1,2,2),
+    (1,3,3),
+    (1,4,4),
+    (1,5,5),
+    (2,1,1),
+    (2,6,6),
+    (2,7,7),
+    (2,2,2),
+    (2,8,4),
+    (3,1,1),
+    (3,5,5),
+    (3,9,8),
+    (3,10,9),
+    (3,11,10);
+
 -- Prints a header for the movies output
 .print "Movies"
 .print "======"
@@ -188,6 +241,10 @@ VALUES (
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT movies.movie_name, movies.release_year, movies.mpaa_rating, studio.studio_name
+FROM movies 
+INNER JOIN studio ON movies.studio_id = studio.id;
+
 
 -- Prints a header for the cast output
 .print ""
@@ -198,3 +255,8 @@ VALUES (
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT movies.movie_name, actors.actor_name, characters.character_name
+FROM top_cast
+INNER JOIN movies ON top_cast.movies_id = movies.id
+INNER JOIN actors ON top_cast.actors_id = actors.id
+INNER JOIN characters ON top_cast.characters_id = characters.id;
